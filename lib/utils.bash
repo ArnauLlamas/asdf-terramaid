@@ -71,7 +71,8 @@ install_version() {
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 
     mkdir -p "$install_path"
-    mv "$ASDF_DOWNLOAD_PATH/${tool_cmd^}" "$ASDF_DOWNLOAD_PATH/$tool_cmd"
+    tool_cmd_cap="$(tr '[:lower:]' '[:upper:]' <<<"${tool_cmd:0:1}")${tool_cmd:1}"
+    mv "$ASDF_DOWNLOAD_PATH/${tool_cmd_cap}" "$ASDF_DOWNLOAD_PATH/$tool_cmd"
     cp -r "$ASDF_DOWNLOAD_PATH/$tool_cmd" "$install_path"
 
     chmod +x "$install_path/$tool_cmd"
