@@ -40,7 +40,7 @@ asdf install terramaid latest
 asdf global terramaid latest
 
 # Now terramaid commands are available
-terramaid --version
+terramaid version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
