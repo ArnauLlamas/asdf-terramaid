@@ -3,7 +3,7 @@
 set -euo pipefail
 
 TOOL_NAME="terramaid"
-TOOL_TEST="terramaid --version"
+TOOL_TEST="terramaid version"
 OWNER="RoseSecurity"
 REPO="$TOOL_NAME"
 GH_REPO="https://github.com/${OWNER}/${REPO}"
