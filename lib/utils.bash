@@ -25,10 +25,10 @@ list_all_versions() {
 
 list_github_releases() {
   curl "${curl_opts[@]}" \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  https://api.github.com/repos/$OWNER/$REPO/releases \
-  | awk -F': ' '/tag_name/{gsub(/[v",]*/, "");print $2}'
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    https://api.github.com/repos/$OWNER/$REPO/releases |
+    awk -F': ' '/tag_name/{gsub(/[v",]*/, "");print $2}'
 }
 
 sort_versions() {
@@ -46,9 +46,9 @@ download_release() {
 
   local arch
   case "$(uname -m)" in
-    x86_64) arch=x86_64 ;;
-    x86) arch=i368 ;;
-    aarch64|arm64) arch=arm64 ;;
+  x86_64) arch=x86_64 ;;
+  x86) arch=i368 ;;
+  aarch64 | arm64) arch=arm64 ;;
   esac
 
   url="$GH_REPO/releases/download/v${version}/Terramaid_${platform}_${arch}.tar.gz"
@@ -71,7 +71,7 @@ install_version() {
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 
     mkdir -p "$install_path"
-    cp -r "$ASDF_DOWNLOAD_PATH"/$tool_cmd "$install_path"
+    cp -r "$ASDF_DOWNLOAD_PATH/$tool_cmd" "$install_path"
 
     chmod +x "$install_path/$tool_cmd"
     test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
